@@ -24,7 +24,7 @@ describe "sale of harry potter books" do
     basket.add_book( 'book3', 2 )
     basket.add_book( 'book4', 3 )
     basket.add_book( 'book5', 1 )
-    expect( basket.all ).to eq( { 'book1'=>1, 'book2'=>1,'book3'=>2,'book4'=>3,'book5'=>1 } )
+    expect( basket.all ).to eq( { 'book1' => 1, 'book2'=>1,'book3'=>2,'book4'=>3,'book5'=>1 } )
   end
 
   it "calculate discount for 2 different titles" do
@@ -65,9 +65,9 @@ describe "sale of harry potter books" do
       @basket[title] = quantity
     end
 
-    def title
-      @title
-    end
+#   def title
+#     @title
+#   end
 
     def size
       @basket.size
@@ -82,7 +82,7 @@ describe "sale of harry potter books" do
     end
 
     def discounted_price
-      @discount = { 2 => 0.95, 3 => 0.9, 5 => 0.75 }
+      @discount = { 1 => 1, 2 => 0.95, 3 => 0.9, 4 => 0.9, 5 => 0.75 }
       @basket.size * UNIT_PRICE * @discount[ @basket.size ]
     end
 
