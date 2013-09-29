@@ -50,7 +50,7 @@ describe "sale of harry potter books" do
     end
 
     def price_single_title
-      @basket["book2"] * 8
+      @basket.keys[0] * 8
     end
 
   end
