@@ -34,6 +34,24 @@ describe "sale of harry potter books" do
     expect( basket.discounted_price ).to eq( 16 * 0.95 )
   end
 
+  it "calculate discount for 3 different titles" do
+    basket = Basket.new
+    basket.add_book( 'book1', 1 )
+    basket.add_book( 'book2', 1 )
+    basket.add_book( 'book5', 1 )
+    expect( basket.discounted_price ).to eq( 24 * 0.9 )
+  end
+
+  it "calculate discount for 5 different titles" do
+    basket = Basket.new
+    basket.add_book( 'book1', 1 )
+    basket.add_book( 'book2', 1 )
+    basket.add_book( 'book3', 1 )
+    basket.add_book( 'book4', 1 )
+    basket.add_book( 'book5', 1 )
+    expect( basket.discounted_price ).to eq( 40 * 0.75 )
+  end
+
 
   class Basket
 
