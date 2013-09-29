@@ -29,6 +29,8 @@ describe "sale of harry potter books" do
 
   class Basket
 
+    UNIT_PRICE = 8
+
     def initialize()
       @basket = Hash.new
     end
@@ -50,7 +52,7 @@ describe "sale of harry potter books" do
     end
 
     def price_single_title
-      @basket.keys[0] * 8
+      @basket[@basket.keys.first] * UNIT_PRICE
     end
 
   end
