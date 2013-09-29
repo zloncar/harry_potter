@@ -1,8 +1,10 @@
 describe "sale of harry potter books" do
 
   it "buy one or more of the same book" do
-    price = basket( 'book3', 2 )
-    expect( price ).to eq( 16 )
+    basket = Basket.new
+    basket.add_book( 'book2', 3 )
+    price = basket.price_single_title
+    expect( price ).to eq( 24 )
   end
 
   it "buy five different title books" do
@@ -12,11 +14,21 @@ describe "sale of harry potter books" do
     basket.add_book( 'book3', 1 )
     basket.add_book( 'book4', 1 )
     basket.add_book( 'book5', 1 )
-#   puts basket.title
     expect( basket.size ).to eq( 5 )
   end
 
+  it "buy different combo of books" do
+    basket = Basket.new
+    basket.add_book( 'book1', 1 )
+    basket.add_book( 'book2', 1 )
+    basket.add_book( 'book3', 2 )
+    basket.add_book( 'book4', 3 )
+    basket.add_book( 'book5', 1 )
+    expect( basket.all ).to eq( { 'book1'=>1, 'book2'=>1,'book3'=>2,'book4'=>3,'book5'=>1 } )
+  end
+
   class Basket
+
     def initialize()
       @basket = Hash.new
     end
@@ -33,32 +45,14 @@ describe "sale of harry potter books" do
       @basket.size
     end
 
-  end
-
-  def basket( book, quantity )
-    content = Hash.new
-    content[:book] = quantity
-    price = 8 * quantity
-  end
-
-
-  class Book
-    def initialize( title )
-      @price = 8
-      @title = title
+    def all
+      @basket
     end
 
-    def []=(key, value)
-      @placeholder[key] = value
-    end
-
-    def make_guess(word, guess)
-      word.chars.each_with_index do |char, index|
-        self[index] = char if char == guess
-      end
+    def price_single_title
+      @basket["book2"] * 8
     end
 
   end
-
 
 end
